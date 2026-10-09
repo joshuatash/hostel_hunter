@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - CampusHostels</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: var(--bg-main);">
+    
+    <div style="background: var(--white); padding: 40px; border-radius: 16px; width: 100%; max-width: 420px; box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08); border: 1px solid var(--border); text-align: center;">
+        <h2 style="color: var(--text); margin-bottom: 8px;">Welcome Back</h2>
+        <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 24px;">Sign in to your CampusHostels account</p>
+        
+        <form onsubmit="handleLogin(event)">
+            <!-- Account Type Selector -->
+            <div class="form-group" style="text-align: left; margin-bottom: 16px;">
+                <label for="accountType" style="display:block; font-size:13px; font-weight:600; margin-bottom:6px; color: var(--muted);">I am logging in as a:</label>
+                <select id="accountType" style="width:100%; height:46px; padding:0 14px; border:1px solid var(--border); border-radius:10px; background:var(--bg-light); color: var(--text);">
+                    <option value="student">Student (Client)</option>
+                    <option value="vendor">Hostel Owner / Vendor</option>
+                </select>
+            </div>
+
+            <div class="form-group" style="text-align: left; margin-bottom: 16px;">
+                <label for="email" style="display:block; font-size:13px; font-weight:600; margin-bottom:6px; color: var(--muted);">Email Address</label>
+                <input type="email" id="email" required placeholder="name@university.ac.ug" style="width:100%; height:46px; padding:0 14px; border:1px solid var(--border); border-radius:10px; background:var(--bg-light); color: var(--text);">
+            </div>
+
+            <div class="form-group" style="text-align: left; margin-bottom: 24px;">
+                <label for="password" style="display:block; font-size:13px; font-weight:600; margin-bottom:6px; color: var(--muted);">Password</label>
+                <input type="password" id="password" required placeholder="••••••••" style="width:100%; height:46px; padding:0 14px; border:1px solid var(--border); border-radius:10px; background:var(--bg-light); color: var(--text);">
+            </div>
+
+            <button type="submit" class="btn btn-primary full-width" style="height: 48px;">Login to Portal</button>
+        </form>
+
+        <p style="font-size: 0.85rem; color: var(--muted); margin-top: 20px;">
+            Don't have an account? <a href="register.html" style="color: var(--primary); text-decoration: none; font-weight: 600;">Register here</a>
+        </p>
+        <p style="font-size: 0.8rem; margin-top: 10px;"><a href="index.html" style="color: var(--muted); text-decoration: none;">&larr; Back to Home</a></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

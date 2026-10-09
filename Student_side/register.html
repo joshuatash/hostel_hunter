@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - CampusHostels</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: linear-gradient(135deg, var(--navy) 0%, #1e40af 55%, var(--blue) 100%);">
+    
+    <div style="background: var(--white); padding: 40px; border-radius: 16px; width: 100%; max-width: 400px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); text-align: center;">
+        <h2 style="color: var(--navy); margin-bottom: 8px;">Create Account</h2>
+        <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 24px;">Join CampusHostels to book student housing</p>
+        
+        <form action="student-dashboard.html" method="GET">
+            <div class="form-group" style="text-align: left; margin-bottom: 16px;">
+                <label style="display:block; font-size:13px; font-weight:600; margin-bottom:6px;">Full Name</label>
+                <input type="text" required placeholder="Okuta Joshua Tash" style="width:100%; height:46px; padding:0 14px; border:1px solid var(--border); border-radius:10px; background:#f8fafc;">
+            </div>
+            <div class="form-group" style="text-align: left; margin-bottom: 16px;">
+                <label style="display:block; font-size:13px; font-weight:600; margin-bottom:6px;">Email Address</label>
+                <input type="email" required placeholder="student@university.ac.ug" style="width:100%; height:46px; padding:0 14px; border:1px solid var(--border); border-radius:10px; background:#f8fafc;">
+            </div>
+            <div class="form-group" style="text-align: left; margin-bottom: 24px;">
+                <label style="display:block; font-size:13px; font-weight:600; margin-bottom:6px;">Password</label>
+                <input type="password" required placeholder="••••••••" style="width:100%; height:46px; padding:0 14px; border:1px solid var(--border); border-radius:10px; background:#f8fafc;">
+            </div>
+            <button type="submit" class="btn btn-primary full-width" style="height: 48px;">Register</button>
+        </form>
+        <p style="font-size: 0.85rem; color: var(--muted); margin-top: 20px;">
+            Already have an account? <a href="login.html" style="color: var(--blue); text-decoration: none; font-weight: 600;">Login here</a>
+        </p>
+       
+    </div>
+
+</body>
+</html>

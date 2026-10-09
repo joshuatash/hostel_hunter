@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - CampusHostels</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">CampusHostels</a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="listings.html">Browse Hostels</a></li>
+                <li><a href="../index.html#features">Why Us</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+                <li><a href="../index.html" onclick="handleLogout(event)" class="btn btn-outline">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Dashboard Layout -->
+    <div class="container">
+        <div class="dashboard-layout">
+            
+            <!-- Sidebar Navigation -->
+            <aside class="dashboard-sidebar">
+                <div class="student-profile-snippet">
+                    <div class="student-avatar">OT</div>
+                    <h3>Okuta Joshua Tash</h3>
+                    <p>Applied Information Tech</p>
+                </div>
+
+                <div class="dashboard-nav">
+                    <a href="student-dashboard.html?tab=overview" class="dashboard-nav-link active" id="nav-overview" onclick="switchTab(event, 'overview')">Dashboard Overview</a>
+                    <a href="listings.html" class="dashboard-nav-link">Browse Hostels</a>
+                    <a href="student-dashboard.html?tab=bookings" class="dashboard-nav-link" id="nav-bookings" onclick="switchTab(event, 'bookings')">My Bookings</a>
+                    <a href="student-dashboard.html?tab=favorites" class="dashboard-nav-link" id="nav-favorites" onclick="switchTab(event, 'favorites')">Saved Favorites</a>
+                    <a href="student-dashboard.html?tab=settings" class="dashboard-nav-link" id="nav-settings" onclick="switchTab(event, 'settings')">Account Settings</a>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="dashboard-main">
+                
+                <!-- TAB 1: OVERVIEW -->
+                <div id="overview" class="dashboard-section active">
+                    <div class="dashboard-card">
+                        <h2>Welcome back, Joshua!</h2>
+                        <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 24px;">Here is a summary of your active room reservations and accommodation status.</p>
+
+                        <div class="stats-grid">
+                            <div class="stat-box">
+                                <span>Active Bookings</span>
+                                <strong>1 Room</strong>
+                            </div>
+                            <div class="stat-box">
+                                <span>Payment Status</span>
+                                <strong style="color: var(--success);">Deposit Paid</strong>
+                            </div>
+                            <div class="stat-box">
+                                <span>Term</span>
+                                <strong>Semester 1, 2026</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <h2>Current Room Reservation</h2>
+                        <div style="background: var(--bg-light); border: 1px solid var(--border); border-radius: 12px; padding: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                            <div>
+                                <span class="badge-status confirmed" style="margin-bottom: 8px;">Confirmed Booking</span>
+                                <h3 style="color: var(--text); font-size: 1.15rem; margin-bottom: 4px;">Elite Heights Hostel</h3>
+                                <p style="color: var(--muted); font-size: 0.85rem;">Single Room (Standard) • Check-in: Feb 15, 2026</p>
+                            </div>
+                            <div>
+                                <a href="hostel-detail.html?id=1" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.85rem;">View Hostel</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: MY BOOKINGS -->
+                <div id="bookings" class="dashboard-section">
+                    <div class="dashboard-card">
+                        <h2>Booking History & Active Requests</h2>
+                        <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">Review all past and current room reservations.</p>
+                        <div style="overflow-x: auto;">
+                            <table class="booking-table">
+                                <thead>
+                                    <tr>
+                                        <th>Hostel Name</th>
+                                        <th>Room Type</th>
+                                        <th>Semester</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Elite Heights Hostel</strong></td>
+                                        <td>Single Room</td>
+                                        <td>Sem 1, 2026</td>
+                                        <td><span class="badge-status confirmed">Confirmed</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Campus View Residence</strong></td>
+                                        <td>Double Sharing</td>
+                                        <td>Sem 2, 2025</td>
+                                        <td><span class="badge-status confirmed">Completed</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: SAVED FAVORITES -->
+                <div id="favorites" class="dashboard-section">
+                    <div class="dashboard-card">
+                        <h2>Saved Favorite Hostels</h2>
+                        <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">Hostels you have bookmarked for quick comparison.</p>
+                        
+                        <div class="grid" style="grid-template-columns: repeat(2, 1fr);">
+                            <div class="card">
+                                <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" alt="Campus View Residence">
+                                <div class="card-body">
+                                    <div class="card-meta">
+                                        <span class="badge success">Verified</span>
+                                        <span class="rating">&#9733; 4.6 (18)</span>
+                                    </div>
+                                    <h3>Campus View Residence</h3>
+                                    <p class="location">Main Gate Road</p>
+                                    <p class="price">$150 <span>/ semester</span></p>
+                                    <a href="hostel-detail.html?id=2" class="btn btn-outline full-width">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: ACCOUNT SETTINGS -->
+                <div id="settings" class="dashboard-section">
+                    <div class="dashboard-card">
+                        <h2>Account Settings</h2>
+                        <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">Update your personal student profile credentials.</p>
+                        
+                        <form onsubmit="handleSettingsUpdate(event)">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="set_name">Full Name</label>
+                                    <input type="text" id="set_name" value="Okuta Joshua Tash">
+                                </div>
+                                <div class="form-group">
+                                    <label for="set_email">Email Address</label>
+                                    <input type="email" id="set_email" value="student@isbat.ac.ug">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="set_phone">Phone Number</label>
+                                    <input type="tel" id="set_phone" value="+256 700 123456">
+                                </div>
+                                <div class="form-group">
+                                    <label for="set_course">Course Program</label>
+                                    <input type="text" id="set_course" value="Applied Information Technology">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="padding: 10px 24px;">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+    </div>
+
+    <!-- Success Modal Popup -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal-card text-center">
+            <h3 style="color: var(--success); margin-bottom: 12px;">Success!</h3>
+            <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;" id="modalMessage">Your account settings have been updated successfully.</p>
+            <button class="btn btn-primary" onclick="closeModal()" style="width: 100%;">OK</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 CampusHostels. All rights reserved.</p>
+            <p class="footer-sub">Designed for students to find comfortable, secure, and affordable housing.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

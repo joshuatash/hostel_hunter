@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Booking - CampusHostels</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">CampusHostels</a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="listings.html">Browse Hostels</a></li>
+                <li><a href="index.html#features">Why Us</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="login.html" class="btn btn-outline">Login</a></li>
+                <li><a href="register.html" class="btn btn-primary">Register</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Room Reservation Checkout</h1>
+            <p>Provide your student details to secure your room booking</p>
+        </div>
+    </header>
+
+    <!-- Main Booking Layout -->
+    <div class="container">
+        <div class="booking-layout">
+            
+            <!-- Left Column: Student Details Form -->
+            <form action="student-dashboard.html" method="GET">
+                <div class="booking-card">
+                    <h2>Student Tenant Details</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="full_name">Full Name (As on ID)</label>
+                            <input type="text" id="full_name" name="full_name" placeholder="Okuta Joshua Tash" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="student_email">Student Email</label>
+                            <input type="email" id="student_email" name="student_email" placeholder="student@university.ac.ug" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number (Mobile Money)</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+256 700 000000" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="course">Degree / Course Program</label>
+                            <input type="text" id="course" name="course" placeholder="Applied Information Technology" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="semester">Academic Term / Semester</label>
+                            <select id="semester" name="semester" required>
+                                <option value="sem1_2026">Semester 1, 2026</option>
+                                <option value="sem2_2026">Semester 2, 2026</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkin_date">Expected Check-in Date</label>
+                            <input type="date" id="checkin_date" name="checkin_date" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Special Requests or Preferences (Optional)</label>
+                        <textarea id="notes" name="notes" placeholder="e.g. Prefer top floor or corner room if available"></textarea>
+                    </div>
+                </div>
+
+                <div class="booking-card">
+                    <h2>Payment Deposit Option</h2>
+                    <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">A reservation deposit is required to hold your room. Choose your preferred payment channel below.</p>
+                    
+                    <!-- Payment Method Cards -->
+                    <div class="payment-options-grid">
+                        <label class="payment-card-option selected" id="opt-mtn">
+                            <input type="radio" name="payment_method" value="mtn" checked onchange="togglePaymentForm('mtn')">
+                            <span class="provider-badge mtn">MTN Mobile Money</span>
+                            <span class="payment-title">MTN MoMo Pay</span>
+                            <span class="payment-desc">Instant prompt sent to your phone</span>
+                        </label>
+
+                        <label class="payment-card-option" id="opt-airtel">
+                            <input type="radio" name="payment_method" value="airtel" onchange="togglePaymentForm('airtel')">
+                            <span class="provider-badge airtel">Airtel Money</span>
+                            <span class="payment-title">Airtel Money Pay</span>
+                            <span class="payment-desc">Instant prompt sent to your phone</span>
+                        </label>
+
+                        <label class="payment-card-option" id="opt-bank">
+                            <input type="radio" name="payment_method" value="bank" onchange="togglePaymentForm('bank')">
+                            <span class="provider-badge">Bank / Cash</span>
+                            <span class="payment-title">Office / Bank Deposit</span>
+                            <span class="payment-desc">Pay directly at hostel office</span>
+                        </label>
+                    </div>
+
+                    <!-- Dynamic Payment Form Fields -->
+                    <div id="mobile-money-box" class="payment-details-box active">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label for="momo_number">Mobile Money Phone Number</label>
+                            <input type="tel" id="momo_number" name="momo_number" placeholder="0770000000 / 0780000000" value="+256 ">
+                            <small style="color: var(--muted); font-size: 0.8rem; margin-top: 6px; display: block;">You will receive an authorization prompt on this number to enter your PIN.</small>
+                        </div>
+                    </div>
+
+                    <div id="bank-box" class="payment-details-box">
+                        <p style="font-size: 0.9rem; color: var(--text); margin-bottom: 8px;"><strong>Instructions for Office / Bank Deposit:</strong></p>
+                        <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 0;">You can visit the Elite Heights management office at Techambia Zone A or deposit directly to Stanbic Bank Account: <strong>9030012345678</strong> (CampusHostels Ltd). Bring your slip during check-in.</p>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary full-width" style="margin-top: 24px; height: 48px; font-size: 16px;">Confirm & Submit Booking Request</button>
+                </div>
+            </form>
+
+            <!-- Right Column: Booking Summary Sidebar -->
+            <div>
+                <div class="booking-card" style="position: sticky; top: 90px;">
+                    <h2>Booking Summary</h2>
+                    
+                    <div style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--border);">
+                        <strong style="color: var(--navy); display: block; font-size: 1.05rem; margin-bottom: 4px;">Elite Heights Hostel</strong>
+                        <span style="font-size: 0.85rem; color: var(--muted);">Single Room (Standard)</span>
+                    </div>
+
+                    <div class="summary-item">
+                        <span>Room Rate (Semester):</span>
+                        <strong>$120.00</strong>
+                    </div>
+                    <div class="summary-item">
+                        <span>Reservation Fee:</span>
+                        <strong>$20.00</strong>
+                    </div>
+                    <div class="summary-item">
+                        <span>Service Charge:</span>
+                        <strong>$0.00</strong>
+                    </div>
+
+                    <div class="summary-total">
+                        <span>Total Due Now:</span>
+                        <span style="color: var(--blue);">$20.00</span>
+                    </div>
+                    
+                    <p style="font-size: 0.75rem; color: var(--muted); margin-top: 16px; text-align: center;">
+                        Secured by CampusHostels Verification Guarantee.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 CampusHostels. All rights reserved.</p>
+            <p class="footer-sub">Designed for students to find comfortable, secure, and affordable housing.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

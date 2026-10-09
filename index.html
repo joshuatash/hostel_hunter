@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusHostels - Find Your Student Accommodation</title>
+    <link rel="stylesheet" href="../Student_side/style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">CampusHostels</a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html" class="active">Home</a></li>
+                <li><a href="../Student_side/listings.html">Browse Hostels</a></li>
+                <li><a href="#features">Why Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="../Student_side/login.html" class="btn btn-outline" style="padding: 6px 14px;">Login</a></li>
+                <li><a href="../Student_side/register.html" class="btn btn-primary" style="padding: 6px 14px;">Register</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container hero-content">
+            <h1>Find Your Perfect Student Home</h1>
+            <p>Browse verified hostels near campus with secure booking and transparent pricing.</p>
+            
+            <form action="listings.html" method="GET" class="search-form">
+                <div class="search-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" placeholder="e.g. Techambia, Campus Gate">
+                </div>
+                <div class="search-group">
+                    <label for="room_type">Room Type</label>
+                    <select id="room_type" name="room_type">
+                        <option value="">All Rooms</option>
+                        <option value="single">Single Room</option>
+                        <option value="double">Double Sharing</option>
+                        <option value="self_contained">Self Contained</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary search-btn">Search Hostels</button>
+            </form>
+        </div>
+    </header>
+
+    <!-- Featured Hostels Section -->
+    <section class="section" id="hostels">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <h2>Featured Hostels</h2>
+                    <p>Top-rated student residences close to campus</p>
+                </div>
+                <a href="listings.html" class="view-all">View All Hostels &rarr;</a>
+            </div>
+
+            <div class="grid">
+                <!-- Card 1 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=600&q=80" alt="Elite Heights Hostel">
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="badge success">Verified</span>
+                            <span class="rating">&#9733; 4.8 (24)</span>
+                        </div>
+                        <h3>Elite Heights Hostel</h3>
+                        <p class="location">Techambia Zone A (5 mins walk)</p>
+                        <p class="price">$120 <span>/ semester</span></p>
+                        <a href="hostel-detail.html?id=1" class="btn btn-outline full-width">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" alt="Campus View Residence">
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="badge success">Verified</span>
+                            <span class="rating">&#9733; 4.6 (18)</span>
+                        </div>
+                        <h3>Campus View Residence</h3>
+                        <p class="location">Main Gate Road</p>
+                        <p class="price">$150 <span>/ semester</span></p>
+                        <a href="hostel-detail.html?id=2" class="btn btn-outline full-width">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80" alt="Green Valley Hostel">
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="badge success">Verified</span>
+                            <span class="rating">&#9733; 4.9 (31)</span>
+                        </div>
+                        <h3>Green Valley Hostel</h3>
+                        <p class="location">North Campus Close</p>
+                        <p class="price">$100 <span>/ semester</span></p>
+                        <a href="hostel-detail.html?id=3" class="btn btn-outline full-width">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section bg-light" id="features">
+        <div class="container">
+            <div class="text-center" style="max-width: 600px; margin: 0 auto 40px;">
+                <h2>Why Students Choose Us</h2>
+                <p class="section-sub">We make finding and securing university accommodation stress-free, safe, and transparent.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div></div>
+                    <h3>100% Verified Listings</h3>
+                    <p>Every hostel and room is physically inspected and verified to prevent rental scams and ensure student safety.</p>
+                </div>
+                <div class="feature-card">
+                    <div></div>
+                    <h3>Instant Room Booking</h3>
+                    <p>Secure your room online in minutes using mobile money or bank deposits before someone else takes it.</p>
+                </div>
+                <div class="feature-card">
+                    <div></div>
+                    <h3>Dedicated Support</h3>
+                    <p>Our student support team is ready to assist you with check-in issues, landlord disputes, and inquiries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="contact-layout">
+                
+                <!-- Contact Info Card -->
+                <div class="contact-info-card">
+                    <h3>Get in Touch with Us</h3>
+                    <p>Have questions about a hostel, booking process, or partnership? Reach out to our team and we'll get back to you promptly.</p>
+                    
+                    <div class="contact-detail-item">
+                        <span>📍</span>
+                        <div>
+                            <strong>Office Location</strong>
+                            <p style="color: #cbd5e1; font-size: 0.85rem; margin-top: 2px;">Techambia Zone A, Bala Town Council, Uganda</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail-item">
+                        <span>📞</span>
+                        <div>
+                            <strong>Phone / WhatsApp</strong>
+                            <p style="color: #cbd5e1; font-size: 0.85rem; margin-top: 2px;">+256 700 123456 / +256 780 987654</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail-item">
+                        <span>✉️</span>
+                        <div>
+                            <strong>Email Address</strong>
+                            <p style="color: #cbd5e1; font-size: 0.85rem; margin-top: 2px;">support@campushostels.ac.ug</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form Card -->
+                <div class="contact-form-card">
+                    <h3 style="color: var(--navy); font-size: 1.35rem; margin-bottom: 8px;">Send Us a Message</h3>
+                    <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 24px;">Fill out the form below and we will respond via email or phone.</p>
+                    
+                    <form onsubmit="handleContactSubmit(event)">
+                        <div class="form-group" style="text-align: left; margin-bottom: 16px;">
+                            <label style="display:block; font-size:13px; font-weight:600; margin-bottom:6px; color: #334155;">Your Full Name</label>
+                            <input type="text" required placeholder="Okuta Joshua Tash" style="width:100%; height:46px; padding:0 14px; border:1px solid var(--border); border-radius:10px; background:#f8fafc;">
+                        </div>
+                        <div class="form-group" style="text-align: left; margin-bottom: 16px;">
+                            <label style="display:block; font-size:13px; font-weight:600; margin-bottom:6px; color: #334155;">Email Address</label>
+                            <input type="email" required placeholder="student@university.ac.ug" style="width:100%; height:46px; padding:0 14px; border:1px solid var(--border); border-radius:10px; background:#f8fafc;">
+                        </div>
+                        <div class="form-group" style="text-align: left; margin-bottom: 20px;">
+                            <label style="display:block; font-size:13px; font-weight:600; margin-bottom:6px; color: #334155;">Message</label>
+                            <textarea required placeholder="Type your inquiry or feedback here..." style="width:100%; height:100px; padding:12px 14px; border:1px solid var(--border); border-radius:10px; background:#f8fafc; resize:vertical;"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary full-width" style="height: 46px;">Send Message</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 CampusHostels. All rights reserved.</p>
+            <p class="footer-sub">Designed for students to find comfortable, secure, and affordable housing.</p>
+        </div>
+    </footer>
+
+    <script src="../Student_side/script.js"></script>
+</body>
+</html>
