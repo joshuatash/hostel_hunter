@@ -17,19 +17,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isVendorPage) {
             // Vendor Portal Navbar (Only Home, Vendor Dashboard, Logout)
             navLinks.innerHTML = `
-                <li><a href="../index.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="owner-dashboard.html?tab=owner-overview" class="active">Vendor Dashboard</a></li>
-                <li><a href="../Student_side/login.html" onclick="handleLogout(event)" class="btn btn-outline" style="padding: 6px 14px;">Logout</a></li>
+                <li><a href="login.html" onclick="handleLogout(event)" class="btn btn-outline" style="padding: 6px 14px;">Logout</a></li>
             `;
         } else {
             // Student / Public Portal Navbar
             navLinks.innerHTML = `
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../Student_side/listings.html">Browse Hostels</a></li>
-                <li><a href="../index.html#features">Why Us</a></li>
-                <li><a href="../index.html#contact">Contact</a></li>
-                <li><a href="../Student_side/student-dashboard.html" class="btn btn-outline" style="padding: 6px 14px;">My Dashboard</a></li>
-                <li><a href="#" onclick="handleLogout(event)" class="btn btn-primary" style="padding: 6px 14px;">Logout</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="listings.html">Browse Hostels</a></li>
+                <li><a href="index.html#features">Why Us</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="student-dashboard.html" class="btn btn-outline" style="padding: 6px 14px;">My Dashboard</a></li>
+                <li><a href="login.html" onclick="handleLogout(event)" class="btn btn-primary" style="padding: 6px 14px;">Logout</a></li>
             `;
         }
     }

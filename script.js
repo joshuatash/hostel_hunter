@@ -16,17 +16,17 @@ document.addEventListener("DOMContentLoaded", () => {
   if (isLoggedIn && navLinks) {
     if (accountType === "vendor") {
       navLinks.innerHTML = `
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../vendor_side/owner-dashboard.html?tab=owner-overview" class="active">Vendor Dashboard</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="owner-dashboard.html?tab=owner-overview" class="active">Vendor Dashboard</a></li>
         <li><a href="#" onclick="handleLogout(event)" class="btn btn-outline" style="padding: 6px 14px;">Logout</a></li>
       `;
     } else {
       navLinks.innerHTML = `
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../Student_side/listings.html">Browse Hostels</a></li>
-        <li><a href="../index.html#features">Why Us</a></li>
-        <li><a href="../index.html#contact">Contact</a></li>
-        <li><a href="../Student_side/student-dashboard.html" class="btn btn-outline" style="padding: 6px 14px;">My Dashboard</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="listings.html">Browse Hostels</a></li>
+        <li><a href="index.html#features">Why Us</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="student-dashboard.html" class="btn btn-outline" style="padding: 6px 14px;">My Dashboard</a></li>
         <li><a href="#" onclick="handleLogout(event)" class="btn btn-primary" style="padding: 6px 14px;">Logout</a></li>
       `;
     }
@@ -60,7 +60,7 @@ function handleLogin(event) {
   localStorage.setItem("campus_account_type", accountType);
 
   if (accountType === "vendor") {
-    window.location.href = "../vendor_side/owner-dashboard.html";
+    window.location.href = "vendor_side/owner-dashboard.html";
   } else {
     window.location.href = "student-dashboard.html";
   }
@@ -71,7 +71,7 @@ function handleLogout(event) {
   event.preventDefault();
   localStorage.removeItem("campus_user_logged_in");
   localStorage.removeItem("campus_account_type");
-  window.location.href = "../index.html";
+  window.location.href = "index.html";
 }
 
 // Dashboard Tab Switcher
