@@ -134,3 +134,62 @@ function togglePaymentForm(method) {
     if (momoBox) momoBox.classList.remove("active");
   }
 }
+
+// AJAX Submission for FormSubmit (Keeps user on page & shows green tick)
+async function handleAjaxContactSubmit(event) {
+  event.preventDefault();
+
+  const alertBox = document.getElementById("contactAlert");
+  const submitBtn = document.getElementById("contactBtn");
+  const form = document.getElementById("contactForm");
+
+  // Show loading state
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Sending Message...";
+  alertBox.style.display = "none";
+
+  const formData = new FormData(form);
+
+  try {
+    const response = await fetch(
+      "https://formsubmit.co/ajax/okutajoshuatash256@gmail.com",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: formData,
+      },
+    );
+
+    const result = await response.json();
+
+    if (response.ok || result.success === "true") {
+      // Display green checkmark alert box
+      alertBox.style.display = "flex";
+      alertBox.style.background = "#dcfce7";
+      alertBox.style.border = "1px solid #86efac";
+      alertBox.style.color = "#15803d";
+      alertBox.innerHTML = `
+        <span style="font-size: 1.2rem; font-weight: bold;">&#10004;</span>
+        <span>Message sent successfully! We will get back to you shortly.</span>
+      `;
+      form.reset();
+    } else {
+      throw new Error(result.message || "Failed to send message.");
+    }
+  } catch (error) {
+    console.error("FormSubmit Error:", error);
+    alertBox.style.display = "flex";
+    alertBox.style.background = "#fef2f2";
+    alertBox.style.border = "1px solid #fecaca";
+    alertBox.style.color = "#b91c1c";
+    alertBox.innerHTML = `
+      <span style="font-size: 1.2rem; font-weight: bold;">&#10008;</span>
+      <span>Unable to send message. Please try again.</span>
+    `;
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Send Message";
+  }
+}
