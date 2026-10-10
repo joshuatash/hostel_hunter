@@ -1,13 +1,39 @@
-// Basic Service Worker for PWA Installation Support
+const CACHE_NAME = "hostelhunter-v1";
+const ASSETS_TO_CACHE = [
+  "index.html",
+  "style.css",
+  "script.js",
+  "manifest.json",
+  "favicon.png"
+];
+
+// Install Event
 self.addEventListener("install", (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(ASSETS_TO_CACHE);
+    })
+  );
   self.skipWaiting();
 });
 
+// Activate Event
 self.addEventListener("activate", (event) => {
-  event.waitUntil(clients.claim());
+  event.waitUntil(
+    caches.keys().then((keys) => {
+      return Promise.all(
+        keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))
+      );
+    })
+  );
+  self.clients.claim();
 });
 
+// Fetch Event (Required for Chrome App Installation)
 self.addEventListener("fetch", (event) => {
-  // Allows basic online network fetching
-  event.respondWith(fetch(event.request));
+  event.respondWith(
+    caches.match(event.request).then((cachedResponse) => {
+      return cachedResponse || fetch(event.request);
+    })
+  );
 });

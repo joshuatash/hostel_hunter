@@ -1,9 +1,11 @@
 {
   "name": "HostelHunter",
   "short_name": "HostelHunter",
-  "description": "Find and book student hostels near campus",
-  "start_url": "./index.html",
+  "description": "Find Your Perfect Student Home",
+  "start_url": "index.html",
+  "scope": "./",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#ffffff",
   "theme_color": "#1e40af",
   "icons": [

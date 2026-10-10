@@ -194,11 +194,16 @@ async function handleAjaxContactSubmit(event) {
     submitBtn.textContent = "Send Message";
   }
 }
-//working with sw.js
+// Register Service Worker for PWA Installation
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./sw.js")
-      .then(() => console.log("Service Worker Registered Successfully"))
-      .catch((err) => console.error("Service Worker Registration Failed:", err));
+    navigator.serviceWorker
+      .register("sw.js")
+      .then((reg) => {
+        console.log("Service Worker registered successfully:", reg.scope);
+      })
+      .catch((err) => {
+        console.error("Service Worker registration failed:", err);
+      });
   });
 }
