@@ -194,16 +194,17 @@
 
                     <form id="contactForm" onsubmit="handleAjaxContactSubmit(event)">
 
-                        <!-- FormSubmit Configurations -->
+                        <!-- FormSubmit Hidden Configurations -->
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_subject" value="New CampusHostels Detailed Inquiry!">
+                        <input type="hidden" name="_subject" value="New CampusHostels Inquiry!">
 
                         <div class="form-group" style="text-align: left; margin-bottom: 16px;">
                             <label for="contactName"
                                 style="display:block; font-size:13px; font-weight:600; margin-bottom:6px; color: var(--muted);">Your
                                 Full Name</label>
-                            <input type="text" id="contactName" name="Name" required placeholder="Okuta Joshua Tash"
+                            <input type="text" id="contactName" name="Full Name" required
+                                placeholder="Okuta Joshua Tash"
                                 style="width:100%; height:46px; padding:0 14px; border:1px solid var(--border); border-radius:10px; background:var(--bg-light); color: var(--text);">
                         </div>
 
@@ -211,7 +212,7 @@
                             <label for="contactEmail"
                                 style="display:block; font-size:13px; font-weight:600; margin-bottom:6px; color: var(--muted);">Email
                                 Address</label>
-                            <input type="email" id="contactEmail" name="Email" required
+                            <input type="email" id="contactEmail" name="Email Address" required
                                 placeholder="student@university.ac.ug"
                                 style="width:100%; height:46px; padding:0 14px; border:1px solid var(--border); border-radius:10px; background:var(--bg-light); color: var(--text);">
                         </div>
@@ -222,7 +223,8 @@
                                 <label for="contactPhone"
                                     style="display:block; font-size:13px; font-weight:600; margin-bottom:6px; color: var(--muted);">Telephone
                                     Number</label>
-                                <input type="tel" id="contactPhone" name="Phone" required placeholder="+256 700 000000"
+                                <input type="tel" id="contactPhone" name="Phone Number" required
+                                    placeholder="+256 700 000000"
                                     style="width:100%; height:46px; padding:0 14px; border:1px solid var(--border); border-radius:10px; background:var(--bg-light); color: var(--text);">
                             </div>
 
@@ -230,7 +232,7 @@
                                 <label for="contactRegion"
                                     style="display:block; font-size:13px; font-weight:600; margin-bottom:6px; color: var(--muted);">Region
                                     / Zone</label>
-                                <select id="contactRegion" name="Region" required
+                                <select id="contactRegion" name="Region Zone" required
                                     style="width:100%; height:46px; padding:0 14px; border:1px solid var(--border); border-radius:10px; background:var(--bg-light); color: var(--text);">
                                     <option value="">Select Region</option>
                                     <option value="Central Region">Central Region</option>
@@ -442,7 +444,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 CampusHostels. All rights reserved.</p>
+            <p>&copy; 2026 HostelHunter. All rights reserved.</p>
             <p class="footer-sub">Designed for students to find comfortable, secure, and affordable housing.</p>
         </div>
     </footer>

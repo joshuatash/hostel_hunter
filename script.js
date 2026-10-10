@@ -135,7 +135,7 @@ function togglePaymentForm(method) {
   }
 }
 
-// AJAX Submission for FormSubmit with Full Region, Country & Phone Data
+// Complete AJAX Submission for FormSubmit
 async function handleAjaxContactSubmit(event) {
   event.preventDefault();
 
@@ -148,12 +148,8 @@ async function handleAjaxContactSubmit(event) {
   submitBtn.textContent = "Sending Message...";
   alertBox.style.display = "none";
 
-  const name = document.getElementById("contactName").value;
-  const email = document.getElementById("contactEmail").value;
-  const phone = document.getElementById("contactPhone").value;
-  const region = document.getElementById("contactRegion").value;
-  const country = document.getElementById("contactCountry").value;
-  const message = document.getElementById("contactText").value;
+  // Using FormData guarantees ALL inputs are included in the email payload
+  const formData = new FormData(form);
 
   try {
     const response = await fetch(
@@ -161,25 +157,15 @@ async function handleAjaxContactSubmit(event) {
       {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify({
-          Name: name,
-          Email: email,
-          Phone: phone,
-          Region: region,
-          Country: country,
-          Message: message,
-          _subject: `New Inquiry from ${name} (${region}, ${country})`,
-          _captcha: "false",
-        }),
+        body: formData,
       },
     );
 
     const result = await response.json();
 
-    if (response.ok && (result.success === "true" || result.success === true)) {
+    if (response.ok || result.success === "true" || result.success === true) {
       // Display green checkmark alert box
       alertBox.style.display = "flex";
       alertBox.style.background = "#dcfce7";
