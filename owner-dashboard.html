@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Owner & Admin Portal - CampusHostels</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="index.html" class="logo">CampusHostels <span style="font-size: 0.75rem; background: var(--primary); color: #fff; padding: 2px 8px; border-radius: 4px; margin-left: 6px;">Vendor Portal</span></a>
+            <a href="index.html" class="logo">CampusHostels <span
+                    style="font-size: 0.75rem; background: var(--primary); color: #fff; padding: 2px 8px; border-radius: 4px; margin-left: 6px;">Vendor
+                    Portal</span></a>
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
@@ -20,7 +24,8 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="owner-dashboard.html?tab=owner-overview" class="active">Vendor Dashboard</a></li>
-                <li><a href="#" onclick="handleLogout(event)" class="btn btn-outline" style="padding: 6px 14px;">Logout</a></li>
+                <li><a href="#" onclick="handleLogout(event)" class="btn btn-outline"
+                        style="padding: 6px 14px;">Logout</a></li>
             </ul>
         </div>
     </nav>
@@ -28,31 +33,37 @@
     <!-- Dashboard Layout -->
     <div class="container">
         <div class="dashboard-layout">
-            
+
             <!-- Sidebar Navigation -->
             <aside class="dashboard-sidebar">
                 <div class="student-profile-snippet">
-                    <div class="student-avatar" style="background: linear-gradient(135deg, var(--accent), var(--primary));">EH</div>
+                    <div class="student-avatar"
+                        style="background: linear-gradient(135deg, var(--accent), var(--primary));">EH</div>
                     <h3>Elite Heights Admin</h3>
                     <p>Property Manager</p>
                 </div>
 
                 <div class="dashboard-nav">
-                    <a href="owner-dashboard.html?tab=owner-overview" class="dashboard-nav-link active" id="nav-owner-overview" onclick="switchTab(event, 'owner-overview')">Portal Overview</a>
-                    <a href="owner-dashboard.html?tab=rooms" class="dashboard-nav-link" id="nav-rooms" onclick="switchTab(event, 'rooms')">Manage Rooms</a>
-                    <a href="owner-dashboard.html?tab=tenant-bookings" class="dashboard-nav-link" id="nav-tenant-bookings" onclick="switchTab(event, 'tenant-bookings')">Tenant Bookings</a>
-                    <a href="owner-dashboard.html?tab=owner-settings" class="dashboard-nav-link" id="nav-owner-settings" onclick="switchTab(event, 'owner-settings')">Property Settings</a>
+                    <a href="owner-dashboard.html?tab=owner-overview" class="dashboard-nav-link active"
+                        id="nav-owner-overview" onclick="switchTab(event, 'owner-overview')">Portal Overview</a>
+                    <a href="owner-dashboard.html?tab=rooms" class="dashboard-nav-link" id="nav-rooms"
+                        onclick="switchTab(event, 'rooms')">Manage Rooms</a>
+                    <a href="owner-dashboard.html?tab=tenant-bookings" class="dashboard-nav-link"
+                        id="nav-tenant-bookings" onclick="switchTab(event, 'tenant-bookings')">Tenant Bookings</a>
+                    <a href="owner-dashboard.html?tab=owner-settings" class="dashboard-nav-link" id="nav-owner-settings"
+                        onclick="switchTab(event, 'owner-settings')">Property Settings</a>
                 </div>
             </aside>
 
             <!-- Main Content Area -->
             <main class="dashboard-main">
-                
+
                 <!-- TAB 1: OVERVIEW -->
                 <div id="owner-overview" class="dashboard-section active">
                     <div class="dashboard-card">
                         <h2>Elite Heights Portal Overview</h2>
-                        <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 24px;">Real-time performance metrics and occupancy tracking for your property.</p>
+                        <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 24px;">Real-time performance
+                            metrics and occupancy tracking for your property.</p>
 
                         <div class="stats-grid">
                             <div class="stat-box">
@@ -65,7 +76,7 @@
                             </div>
                             <div class="stat-box">
                                 <span>Semester Revenue</span>
-                                <strong style="color: var(--primary);">$5,400</strong>
+                                <strong style="color: var(--primary);">UGX 5,400,000</strong>
                             </div>
                         </div>
                     </div>
@@ -90,7 +101,9 @@
                                         <td>Feb 10, 2026</td>
                                         <td><span class="badge-status pending">Pending Approval</span></td>
                                         <td>
-                                            <button class="btn btn-primary" style="padding: 4px 10px; font-size: 0.75rem;" onclick="alert('Booking approved successfully!')">Approve</button>
+                                            <button class="btn btn-primary"
+                                                style="padding: 4px 10px; font-size: 0.75rem;"
+                                                onclick="alert('Booking approved successfully!')">Approve</button>
                                         </td>
                                     </tr>
                                     <tr>
@@ -109,9 +122,11 @@
                 <!-- TAB 2: MANAGE ROOMS -->
                 <div id="rooms" class="dashboard-section">
                     <div class="dashboard-card">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
                             <h2>Room Inventory & Availability</h2>
-                            <button class="btn btn-primary" style="padding: 6px 14px; font-size: 0.85rem;" onclick="alert('Add Room modal triggered.')">+ Add New Room</button>
+                            <button class="btn btn-primary" style="padding: 6px 14px; font-size: 0.85rem;"
+                                onclick="alert('Add Room modal triggered.')">+ Add New Room</button>
                         </div>
                         <div style="overflow-x: auto;">
                             <table class="booking-table">
@@ -128,23 +143,30 @@
                                     <tr>
                                         <td><strong>Room 101</strong></td>
                                         <td>Single Room</td>
-                                        <td>$120</td>
+                                        <td>UGX 1200000</td>
                                         <td><span class="badge-status confirmed">Occupied</span></td>
-                                        <td><a href="#" style="color: var(--primary); font-size: 0.85rem; text-decoration: none;">Edit</a></td>
+                                        <td><a href="#"
+                                                style="color: var(--primary); font-size: 0.85rem; text-decoration: none;">Edit</a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td><strong>Room 102</strong></td>
                                         <td>Single Room</td>
-                                        <td>$120</td>
-                                        <td><span class="badge-status pending" style="background:#e0f2fe; color:#0369a1;">Available</span></td>
-                                        <td><a href="#" style="color: var(--primary); font-size: 0.85rem; text-decoration: none;">Edit</a></td>
+                                        <td>UGX 1200000</td>
+                                        <td><span class="badge-status pending"
+                                                style="background:#e0f2fe; color:#0369a1;">Available</span></td>
+                                        <td><a href="#"
+                                                style="color: var(--primary); font-size: 0.85rem; text-decoration: none;">Edit</a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td><strong>Room 201</strong></td>
                                         <td>Double Sharing</td>
-                                        <td>$90</td>
+                                        <td>UGX 900000</td>
                                         <td><span class="badge-status confirmed">Occupied</span></td>
-                                        <td><a href="#" style="color: var(--primary); font-size: 0.85rem; text-decoration: none;">Edit</a></td>
+                                        <td><a href="#"
+                                                style="color: var(--primary); font-size: 0.85rem; text-decoration: none;">Edit</a>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -156,7 +178,8 @@
                 <div id="tenant-bookings" class="dashboard-section">
                     <div class="dashboard-card">
                         <h2>All Tenant Reservations</h2>
-                        <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">Complete record of students checked into your property.</p>
+                        <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">Complete record of
+                            students checked into your property.</p>
                         <div style="overflow-x: auto;">
                             <table class="booking-table">
                                 <thead>
@@ -172,7 +195,7 @@
                                         <td><strong>Okuta Joshua Tash</strong></td>
                                         <td>Applied IT</td>
                                         <td>Room 102 (Single)</td>
-                                        <td><span class="badge-status confirmed">Deposit Paid ($50)</span></td>
+                                        <td><span class="badge-status confirmed">Deposit Paid (UGX 500000)</span></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Tino Sharon Victoria</strong></td>
@@ -190,8 +213,9 @@
                 <div id="owner-settings" class="dashboard-section">
                     <div class="dashboard-card">
                         <h2>Property & Vendor Settings</h2>
-                        <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">Update your hostel profile and payout details.</p>
-                        
+                        <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">Update your hostel
+                            profile and payout details.</p>
+
                         <form onsubmit="handleSettingsUpdate(event)">
                             <div class="form-row">
                                 <div class="form-group">
@@ -213,7 +237,8 @@
                                     <input type="text" value="+256 780 123456 (MTN)">
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary" style="padding: 10px 24px;">Save Property Details</button>
+                            <button type="submit" class="btn btn-primary" style="padding: 10px 24px;">Save Property
+                                Details</button>
                         </form>
                     </div>
                 </div>
@@ -227,7 +252,8 @@
     <div class="modal-overlay" id="successModal">
         <div class="modal-card text-center">
             <h3 style="color: var(--success); margin-bottom: 12px;">Success!</h3>
-            <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;" id="modalMessage">Property details updated successfully.</p>
+            <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;" id="modalMessage">Property details
+                updated successfully.</p>
             <button class="btn btn-primary" onclick="closeModal()" style="width: 100%;">OK</button>
         </div>
     </div>
@@ -242,4 +268,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
