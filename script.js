@@ -148,23 +148,29 @@ async function handleAjaxContactSubmit(event) {
   submitBtn.textContent = "Sending Message...";
   alertBox.style.display = "none";
 
-  const formData = new FormData(form);
+  const name = document.getElementById("contactName").value;
+  const email = document.getElementById("contactEmail").value;
+  const message = document.getElementById("contactText").value;
 
   try {
-    const response = await fetch(
-      "https://formsubmit.co/ajax/okutajoshuatash256@gmail.com",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-        },
-        body: formData,
+    const response = await fetch("https://formsubmit.co/ajax/okutajoshuatash256@gmail.com", {
+      method: "POST",
+      headers: { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
-    );
+      body: JSON.stringify({
+        Name: name,
+        Email: email,
+        Message: message,
+        _subject: "New CampusHostels Inquiry!",
+        _captcha: "false"
+      })
+    });
 
     const result = await response.json();
 
-    if (response.ok || result.success === "true") {
+    if (response.ok && (result.success === "true" || result.success === true)) {
       // Display green checkmark alert box
       alertBox.style.display = "flex";
       alertBox.style.background = "#dcfce7";
@@ -176,7 +182,7 @@ async function handleAjaxContactSubmit(event) {
       `;
       form.reset();
     } else {
-      throw new Error(result.message || "Failed to send message.");
+      throw new Error(result.message || "Form submission returned an error.");
     }
   } catch (error) {
     console.error("FormSubmit Error:", error);
