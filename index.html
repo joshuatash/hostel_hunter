@@ -187,20 +187,21 @@
 
                 <div class="contact-form-card">
                     <h3 style="color: var(--text); font-size: 1.35rem; margin-bottom: 8px;">Send Us a Message</h3>
-                    <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 20px;">Fill out the form below and
+                    <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 24px;">Fill out the form below and
                         we will respond via email or phone.</p>
 
-                    <!-- Inline Feedback Box -->
-                    <div id="contactMessage"
-                        style="display: none; padding: 10px 14px; border-radius: 8px; font-size: 0.85rem; margin-bottom: 16px; text-align: left;">
-                    </div>
+                    <!-- Direct Endpoint to your Gmail -->
+                    <form action="https://formsubmit.co/okutajoshuatash256@gmail.com" method="POST">
 
-                    <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                        <!-- Anti-Spam & Auto-Redirect Settings -->
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_subject" value="New CampusHostels Inquiry!">
+
                         <div class="form-group" style="text-align: left; margin-bottom: 16px;">
                             <label for="contactName"
                                 style="display:block; font-size:13px; font-weight:600; margin-bottom:6px; color: var(--muted);">Your
                                 Full Name</label>
-                            <input type="text" id="contactName" required placeholder="Okuta Joshua Tash"
+                            <input type="text" id="contactName" name="Name" required placeholder="Okuta Joshua Tash"
                                 style="width:100%; height:46px; padding:0 14px; border:1px solid var(--border); border-radius:10px; background:var(--bg-light); color: var(--text);">
                         </div>
 
@@ -208,72 +209,23 @@
                             <label for="contactEmail"
                                 style="display:block; font-size:13px; font-weight:600; margin-bottom:6px; color: var(--muted);">Email
                                 Address</label>
-                            <input type="email" id="contactEmail" required placeholder="student@university.ac.ug"
+                            <input type="email" id="contactEmail" name="Email" required
+                                placeholder="student@university.ac.ug"
                                 style="width:100%; height:46px; padding:0 14px; border:1px solid var(--border); border-radius:10px; background:var(--bg-light); color: var(--text);">
                         </div>
 
                         <div class="form-group" style="text-align: left; margin-bottom: 20px;">
                             <label for="contactText"
                                 style="display:block; font-size:13px; font-weight:600; margin-bottom:6px; color: var(--muted);">Message</label>
-                            <textarea id="contactText" required placeholder="Type your inquiry or feedback here..."
+                            <textarea id="contactText" name="Message" required
+                                placeholder="Type your inquiry or feedback here..."
                                 style="width:100%; height:100px; padding:12px 14px; border:1px solid var(--border); border-radius:10px; background:var(--bg-light); color: var(--text); resize:vertical;"></textarea>
                         </div>
 
-                        <button type="submit" id="contactBtn" class="btn btn-primary full-width"
-                            style="height: 46px;">Send Message</button>
+                        <button type="submit" class="btn btn-primary full-width" style="height: 46px;">Send
+                            Message</button>
                     </form>
                 </div>
-
-                <script>
-                    async function handleContactSubmit(event) {
-                        event.preventDefault();
-
-                        const feedbackBox = document.getElementById('contactMessage');
-                        const submitBtn = document.getElementById('contactBtn');
-
-                        feedbackBox.style.display = 'none';
-                        submitBtn.textContent = 'Sending...';
-                        submitBtn.disabled = true;
-
-                        const name = document.getElementById('contactName').value;
-                        const email = document.getElementById('contactEmail').value;
-                        const message = document.getElementById('contactText').value;
-
-                        try {
-                            const response = await fetch('contact.php', {
-                                method: 'POST',
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify({ name, email, message })
-                            });
-
-                            const result = await response.json();
-
-                            feedbackBox.style.display = 'block';
-                            if (result.success) {
-                                feedbackBox.style.background = '#dcfce7';
-                                feedbackBox.style.border = '1px solid #bbf7d0';
-                                feedbackBox.style.color = '#059669';
-                                feedbackBox.textContent = result.message;
-                                document.getElementById('contactForm').reset();
-                            } else {
-                                feedbackBox.style.background = '#fef2f2';
-                                feedbackBox.style.border = '1px solid #fecaca';
-                                feedbackBox.style.color = '#dc2626';
-                                feedbackBox.textContent = result.message;
-                            }
-                        } catch (error) {
-                            console.error('Error:', error);
-                            feedbackBox.style.display = 'block';
-                            feedbackBox.style.background = '#fef2f2';
-                            feedbackBox.style.border = '1px solid #fecaca';
-                            feedbackBox.style.color = '#dc2626';
-                            feedbackBox.textContent = 'Unable to connect to the server. Please check your XAMPP connection.';
-                        } finally {
-                            submitBtn.textContent = 'Send Message';
-                            submitBtn.disabled = false;
-                        }
-                    }
-                </script>
 
             </div>
         </div>
