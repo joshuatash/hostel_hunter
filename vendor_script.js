@@ -1,13 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Mobile Navigation Toggle
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
 
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
+    // Function to toggle mobile menu
+    function toggleMenu() {
+        if (navLinks) {
             navLinks.classList.toggle('active');
+        }
+    }
+
+    // Attach click handler to hamburger button
+    if (menuToggle) {
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMenu();
         });
     }
+
+    // Close menu when clicking outside on mobile
+    document.addEventListener('click', (e) => {
+        if (navLinks && navLinks.classList.contains('active') && !navLinks.contains(e.target) && e.target !== menuToggle) {
+            navLinks.classList.remove('active');
+        }
+    });
 
     // Check Login State Across All Pages & Update Navbar
     const isLoggedIn = localStorage.getItem('campus_user_logged_in') === 'true';
@@ -15,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const isVendorPage = window.location.pathname.includes('owner-dashboard');
 
         if (isVendorPage) {
-            // Vendor Portal Navbar (Only Home, Vendor Dashboard, Logout)
+            // Vendor Portal Navbar
             navLinks.innerHTML = `
                 <li><a href="index.html">Home</a></li>
                 <li><a href="owner-dashboard.html?tab=owner-overview" class="active">Vendor Dashboard</a></li>
@@ -32,6 +47,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 <li><a href="login.html" onclick="handleLogout(event)" class="btn btn-primary" style="padding: 6px 14px;">Logout</a></li>
             `;
         }
+    }
+
+    // Auto-close mobile drawer when any link inside navLinks is clicked
+    if (navLinks) {
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
     }
 
     // Restore Dashboard Tab from URL Parameters if present
