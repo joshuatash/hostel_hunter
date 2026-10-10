@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Handle Login Form Submission with Account Type routing
+// Handle Login Form Submission
 function handleLogin(event) {
   event.preventDefault();
 
@@ -80,24 +80,19 @@ function handleLogout(event) {
 function switchTab(event, tabId) {
   event.preventDefault();
 
-  // Remove active state from all nav links
   const navLinks = document.querySelectorAll(".dashboard-nav-link");
   navLinks.forEach((link) => link.classList.remove("active"));
 
-  // Add active state to clicked link
   event.currentTarget.classList.add("active");
 
-  // Hide all sections
   const sections = document.querySelectorAll(".dashboard-section");
   sections.forEach((section) => section.classList.remove("active"));
 
-  // Show target section
   const targetSection = document.getElementById(tabId);
   if (targetSection) {
     targetSection.classList.add("active");
   }
 
-  // Update URL without reloading page
   const currentPage = window.location.pathname.split("/").pop() || "index.html";
   window.history.pushState({}, "", `${currentPage}?tab=${tabId}`);
 }
@@ -119,7 +114,7 @@ function closeModal() {
   }
 }
 
-// Payment Method Selector Toggle (Used on booking.html)
+// Payment Method Selector Toggle
 function togglePaymentForm(method) {
   const options = document.querySelectorAll(".payment-card-option");
   options.forEach((opt) => opt.classList.remove("selected"));
@@ -138,13 +133,4 @@ function togglePaymentForm(method) {
     if (bankBox) bankBox.classList.add("active");
     if (momoBox) momoBox.classList.remove("active");
   }
-}
-
-// Handle Contact Form Submission
-function handleContactSubmit(event) {
-  event.preventDefault();
-  alert(
-    "Thank you for reaching out! Your message has been sent successfully. We will get back to you shortly."
-  );
-  event.target.reset();
 }
