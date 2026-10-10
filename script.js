@@ -9,12 +9,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Check Login State Across All Student Pages & Update Navbar
+  // Check Login State Across All Pages & Update Navbar
   const isLoggedIn = localStorage.getItem("campus_user_logged_in") === "true";
   const accountType = localStorage.getItem("campus_account_type");
 
   if (isLoggedIn && navLinks) {
-    if (accountType === "vendor") {
+    const isVendorPage = window.location.pathname.includes("owner-dashboard");
+
+    if (isVendorPage || accountType === "vendor") {
       navLinks.innerHTML = `
         <li><a href="index.html">Home</a></li>
         <li><a href="owner-dashboard.html?tab=owner-overview" class="active">Vendor Dashboard</a></li>
@@ -60,7 +62,7 @@ function handleLogin(event) {
   localStorage.setItem("campus_account_type", accountType);
 
   if (accountType === "vendor") {
-    window.location.href = "vendor_side/owner-dashboard.html";
+    window.location.href = "owner-dashboard.html";
   } else {
     window.location.href = "student-dashboard.html";
   }
@@ -96,7 +98,8 @@ function switchTab(event, tabId) {
   }
 
   // Update URL without reloading page
-  window.history.pushState({}, "", `student-dashboard.html?tab=${tabId}`);
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+  window.history.pushState({}, "", `${currentPage}?tab=${tabId}`);
 }
 
 // Handle Settings Form Submission
@@ -141,7 +144,7 @@ function togglePaymentForm(method) {
 function handleContactSubmit(event) {
   event.preventDefault();
   alert(
-    "Thank you for reaching out! Your message has been sent successfully. We will get back to you shortly.",
+    "Thank you for reaching out! Your message has been sent successfully. We will get back to you shortly."
   );
   event.target.reset();
 }
