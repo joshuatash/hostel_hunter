@@ -10,19 +10,20 @@
 
 <body
     style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: var(--bg-main);">
-
     <div
         style="background: var(--white); padding: 40px; border-radius: 16px; width: 100%; max-width: 420px; box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08); border: 1px solid var(--border); text-align: center;">
-        <h2 style="color: var(--text); margin-bottom: 8px;">Welcome Back</h2>
-        <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 24px;">Sign in to your CampusHostels account
-        </p>
 
-        <!-- Inline Error Text Box -->
-        <div id="errorMessage"
+        <h2 style="color: var(--text); margin-bottom: 8px;">Welcome Back</h2>
+        <img src="icon.jpeg"
+            style="width:100px; height:100px;">
+        <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 24px;">Sign in to your HostelHunter account</p>
+
+        <!-- Unified Alert/Error Box -->
+        <div id="loginAlert"
             style="display: none; background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; padding: 10px 14px; border-radius: 8px; font-size: 0.85rem; margin-bottom: 16px; text-align: left;">
         </div>
 
-        <form id="loginForm" onsubmit="handleXamppLogin(event)">
+        <form id="loginForm" onsubmit="handleLogin(event)">
             <!-- Account Type Selector -->
             <div class="form-group" style="text-align: left; margin-bottom: 16px;">
                 <label for="accountType"
@@ -36,70 +37,40 @@
             </div>
 
             <div class="form-group" style="text-align: left; margin-bottom: 16px;">
-                <label for="email"
+                <label for="loginEmail"
                     style="display:block; font-size:13px; font-weight:600; margin-bottom:6px; color: var(--muted);">Email
                     Address</label>
-                <input type="email" id="email" name="email" required placeholder="name@university.ac.ug"
+                <input type="email" id="loginEmail" name="email" required placeholder="name@university.ac.ug"
                     style="width:100%; height:46px; padding:0 14px; border:1px solid var(--border); border-radius:10px; background:var(--bg-light); color: var(--text);">
             </div>
 
+            <!-- Password Field with Built-in View Toggle -->
             <div class="form-group" style="text-align: left; margin-bottom: 24px;">
-                <label for="password"
+                <label for="loginPassword"
                     style="display:block; font-size:13px; font-weight:600; margin-bottom:6px; color: var(--muted);">Password</label>
-                <input type="password" id="password" name="password" required placeholder="••••••••"
-                    style="width:100%; height:46px; padding:0 14px; border:1px solid var(--border); border-radius:10px; background:var(--bg-light); color: var(--text);">
+                <div style="position: relative; display: flex; align-items: center;">
+                    <input type="password" id="loginPassword" name="password" required placeholder="••••••••"
+                        style="width:100%; height:46px; padding:0 45px 0 14px; border:1px solid var(--border); border-radius:10px; background:var(--bg-light); color: var(--text);">
+                    <button type="button" onclick="togglePasswordVisibility()"
+                        style="position: absolute; right: 12px; background: none; border: none; cursor: pointer; color: var(--muted); font-size: 13px; font-weight: 600;"
+                        id="togglePasswordBtn">Show</button>
+                </div>
             </div>
 
-            <button type="submit" class="btn btn-primary full-width" style="height: 48px;">Login to Portal</button>
+            <button type="submit" id="loginBtn" class="btn btn-primary full-width" style="height: 48px;">Login to
+                Portal</button>
         </form>
 
         <p style="font-size: 0.85rem; color: var(--muted); margin-top: 20px;">
             Don't have an account? <a href="register.html"
                 style="color: var(--primary); text-decoration: none; font-weight: 600;">Register here</a>
         </p>
-        <p style="font-size: 0.8rem; margin-top: 10px;"><a href="index.html"
-                style="color: var(--muted); text-decoration: none;">&larr; Back to Home</a></p>
+        <p style="font-size: 0.8rem; margin-top: 10px;">
+            <a href="index.html" style="color: var(--muted); text-decoration: none;">&larr; Back to Home</a>
+        </p>
     </div>
 
-    <script>
-        async function handleXamppLogin(event) {
-            event.preventDefault();
-
-            const errorBox = document.getElementById('errorMessage');
-            errorBox.style.display = 'none'; // Hide prior errors
-
-            const accountType = document.getElementById('accountType').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-
-            try {
-                const response = await fetch('login.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        email: email,
-                        password: password,
-                        account_type: accountType
-                    })
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    localStorage.setItem('campus_user_logged_in', 'true');
-                    localStorage.setItem('campus_account_type', result.account_type);
-                    window.location.href = result.redirect;
-                } else {
-                    errorBox.textContent = result.message || 'Login failed. Please check your details.';
-                    errorBox.style.display = 'block';
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                errorBox.textContent = 'Unable to connect to the server. Make sure XAMPP Apache and MySQL are running.';
-                errorBox.style.display = 'block';
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>

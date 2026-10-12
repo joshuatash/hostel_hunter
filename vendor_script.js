@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Vendor Portal Navbar
             navLinks.innerHTML = `
                 <li><a href="index.html">Home</a></li>
-                <li><a href="owner-dashboard.html?tab=owner-overview" class="active">Vendor Dashboard</a></li>
+                <li><a href="owner-dashboard.html?tab=owner-overview" class="active">Dashboard</a></li>
                 <li><a href="login.html" onclick="handleLogout(event)" class="btn btn-outline" style="padding: 6px 14px;">Logout</a></li>
             `;
         } else {

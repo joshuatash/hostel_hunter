@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isVendorPage || accountType === "vendor") {
       navLinks.innerHTML = `
         <li><a href="index.html">Home</a></li>
-        <li><a href="owner-dashboard.html?tab=owner-overview" class="active">Vendor Dashboard</a></li>
+        <li><a href="owner-dashboard.html?tab=owner-overview" class="active">Dashboard</a></li>
         <li><a href="#" onclick="handleLogout(event)" class="btn btn-outline" style="padding: 6px 14px;">Logout</a></li>
       `;
     } else {
@@ -53,18 +53,188 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Handle Login Form Submission
-function handleLogin(event) {
+// Toggle Password Visibility Feature for Login
+function togglePasswordVisibility() {
+  const passwordInput = document.getElementById("loginPassword");
+  const toggleBtn = document.getElementById("togglePasswordBtn");
+
+  if (passwordInput && toggleBtn) {
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      toggleBtn.textContent = "Hide";
+    } else {
+      passwordInput.type = "password";
+      toggleBtn.textContent = "Show";
+    }
+  }
+}
+
+// Toggle Password Visibility Feature for Register
+function toggleRegisterPassword() {
+  const passwordInput = document.getElementById("password");
+  const toggleBtn = document.getElementById("toggleRegisterPasswordBtn");
+
+  if (passwordInput && toggleBtn) {
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      toggleBtn.textContent = "Hide";
+    } else {
+      passwordInput.type = "password";
+      toggleBtn.textContent = "Show";
+    }
+  }
+}
+
+// Handle Database-Connected Login Submission via AJAX Fetch
+async function handleLogin(event) {
   event.preventDefault();
 
+  const alertBox =
+    document.getElementById("loginAlert") ||
+    document.getElementById("errorMessage");
+  const loginBtn = document.getElementById("loginBtn");
+  const email = document.getElementById("loginEmail").value;
+  const password = document.getElementById("loginPassword").value;
   const accountType = document.getElementById("accountType").value;
-  localStorage.setItem("campus_user_logged_in", "true");
-  localStorage.setItem("campus_account_type", accountType);
 
-  if (accountType === "vendor") {
-    window.location.href = "owner-dashboard.html";
-  } else {
-    window.location.href = "student-dashboard.html";
+  if (loginBtn) {
+    loginBtn.disabled = true;
+    loginBtn.textContent = "Logging in...";
+  }
+  if (alertBox) alertBox.style.display = "none";
+
+  try {
+    const response = await fetch("./back_end/log_reg/login.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+        account_type: accountType,
+      }),
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      localStorage.setItem("campus_user_logged_in", "true");
+      localStorage.setItem("campus_account_type", result.account_type);
+      localStorage.setItem("campus_user_name", result.user_name);
+
+      if (alertBox) {
+        alertBox.style.display = "block";
+        alertBox.style.background = "#dcfce7";
+        alertBox.style.border = "1px solid #86efac";
+        alertBox.style.color = "#15803d";
+        alertBox.textContent = "Login successful! Redirecting...";
+      }
+
+      setTimeout(() => {
+        window.location.href = result.redirect;
+      }, 800);
+    } else {
+      throw new Error(result.message || "Invalid credentials.");
+    }
+  } catch (error) {
+    console.error("Login Error:", error);
+    if (alertBox) {
+      alertBox.style.display = "block";
+      alertBox.style.background = "#fef2f2";
+      alertBox.style.border = "1px solid #fecaca";
+      alertBox.style.color = "#b91c1c";
+      alertBox.textContent =
+        error.message ||
+        "Connection error. Make sure XAMPP Apache & MySQL are running.";
+    }
+    if (loginBtn) {
+      loginBtn.disabled = false;
+      loginBtn.textContent = "Login to Portal";
+    }
+  }
+}
+
+// Handle Database-Connected Registration Submission via AJAX Fetch
+async function handleRegister(event) {
+  event.preventDefault();
+
+  const errorBox = document.getElementById("errorMessage");
+  const registerBtn = document.getElementById("registerBtn");
+
+  if (errorBox) errorBox.style.display = "none";
+  if (registerBtn) {
+    registerBtn.disabled = true;
+    registerBtn.textContent = "Creating Account...";
+  }
+
+  const accountType = document.getElementById("accountType").value;
+  const fullName = document.getElementById("fullName").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  try {
+    const response = await fetch("./back_end/log_reg/register.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        full_name: fullName,
+        email: email,
+        password: password,
+        account_type: accountType,
+      }),
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      localStorage.setItem("campus_user_logged_in", "true");
+      localStorage.setItem("campus_account_type", result.account_type);
+      localStorage.setItem("campus_user_name", fullName);
+
+      if (errorBox) {
+        errorBox.style.display = "block";
+        errorBox.style.background = "#dcfce7";
+        errorBox.style.border = "1px solid #86efac";
+        errorBox.style.color = "#15803d";
+        errorBox.textContent = "Account created successfully! Redirecting...";
+      }
+
+      setTimeout(() => {
+        window.location.href = result.redirect;
+      }, 800);
+    } else {
+      if (errorBox) {
+        errorBox.style.display = "block";
+        errorBox.style.background = "#fef2f2";
+        errorBox.style.border = "1px solid #fecaca";
+        errorBox.style.color = "#dc2626";
+        errorBox.textContent =
+          result.message || "Registration failed. Please check your details.";
+      }
+      if (registerBtn) {
+        registerBtn.disabled = false;
+        registerBtn.textContent = "Create Account";
+      }
+    }
+  } catch (error) {
+    console.error("Registration Error:", error);
+    if (errorBox) {
+      errorBox.style.display = "block";
+      errorBox.style.background = "#fef2f2";
+      errorBox.style.border = "1px solid #fecaca";
+      errorBox.style.color = "#dc2626";
+      errorBox.textContent =
+        "Unable to connect to the server. Please ensure Server is running!";
+    }
+    if (registerBtn) {
+      registerBtn.disabled = false;
+      registerBtn.textContent = "Create Account";
+    }
   }
 }
 
@@ -73,6 +243,7 @@ function handleLogout(event) {
   event.preventDefault();
   localStorage.removeItem("campus_user_logged_in");
   localStorage.removeItem("campus_account_type");
+  localStorage.removeItem("campus_user_name");
   window.location.href = "index.html";
 }
 
@@ -144,11 +315,12 @@ async function handleAjaxContactSubmit(event) {
   const form = document.getElementById("contactForm");
 
   // Show loading state
-  submitBtn.disabled = true;
-  submitBtn.textContent = "Sending Message...";
-  alertBox.style.display = "none";
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending Message...";
+  }
+  if (alertBox) alertBox.style.display = "none";
 
-  // Using FormData guarantees ALL inputs are included in the email payload
   const formData = new FormData(form);
 
   try {
@@ -166,31 +338,37 @@ async function handleAjaxContactSubmit(event) {
     const result = await response.json();
 
     if (response.ok || result.success === "true" || result.success === true) {
-      // Display green checkmark alert box
-      alertBox.style.display = "flex";
-      alertBox.style.background = "#dcfce7";
-      alertBox.style.border = "1px solid #86efac";
-      alertBox.style.color = "#15803d";
-      alertBox.innerHTML = `
-        <span style="font-size: 1.2rem; font-weight: bold;">&#10004;</span>
-        <span>Message sent successfully! We will get back to you shortly.</span>
-      `;
-      form.reset();
+      if (alertBox) {
+        alertBox.style.display = "flex";
+        alertBox.style.background = "#dcfce7";
+        alertBox.style.border = "1px solid #86efac";
+        alertBox.style.color = "#15803d";
+        alertBox.innerHTML = `
+          <span style="font-size: 1.2rem; font-weight: bold;">&#10004;</span>
+          <span>Message sent successfully! We will get back to you shortly.</span>
+        `;
+      }
+      if (form) form.reset();
     } else {
       throw new Error(result.message || "Form submission returned an error.");
     }
   } catch (error) {
     console.error("FormSubmit Error:", error);
-    alertBox.style.display = "flex";
-    alertBox.style.background = "#fef2f2";
-    alertBox.style.border = "1px solid #fecaca";
-    alertBox.style.color = "#b91c1c";
-    alertBox.innerHTML = `
-      <span style="font-size: 1.2rem; font-weight: bold;">&#10008;</span>
-      <span>Unable to send message. Please try again.</span>
-    `;
+    if (alertBox) {
+      alertBox.style.display = "flex";
+      alertBox.style.background = "#fef2f2";
+      alertBox.style.border = "1px solid #fecaca";
+      alertBox.style.color = "#b91c1c";
+      alertBox.innerHTML = `
+        <span style="font-size: 1.2rem; font-weight: bold;">&#10008;</span>
+        <span>Unable to send message. Please try again.</span>
+      `;
+    }
   } finally {
-    submitBtn.disabled = false;
-    submitBtn.textContent = "Send Message";
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Send Message";
+    }
   }
 }
+

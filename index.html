@@ -8,16 +8,18 @@
 
     <link rel="icon" type="image/png" href="icon.jpeg">
     <link rel="stylesheet" href="style.css">
-
-
 </head>
 
 <body>
-
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="index.html" class="logo">HostelHunter</a>
+            <a href="index.html" class="logo">
+                <img src="icon.jpeg" alt="Logo" class="nav-title-icon"
+                    style="width:50px; height:50px; border-radius:50%; object-fit:cover;">HostelHunter
+            </a>
+          
+
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
@@ -30,7 +32,8 @@
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="login.html" class="btn btn-primary" style="padding: 10px 14px;">Login</a></li>
                 <li><a href="register.html" class="btn btn-primary" style="padding: 10px 14px;">Register</a></li>
-                <button onclick="toggleDarkMode()" class="btn btn-primary" style="padding: 12px 14px;">Dark Mode</button>
+                <button onclick="toggleDarkMode()" class="btn btn-primary" style="padding: 12px 14px;">Dark
+                    Mode</button>
                 <script>
                     //Toggle dark mode button
                     let isDark = false;
@@ -212,7 +215,7 @@
                         <!-- FormSubmit Hidden Configurations -->
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_subject" value="New CampusHostels Inquiry!">
+                        <input type="hidden" name="_subject" value="New HostelHunter Inquiry!">
 
                         <div class="form-group" style="text-align: left; margin-bottom: 16px;">
                             <label for="contactName"

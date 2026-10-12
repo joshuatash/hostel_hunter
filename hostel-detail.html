@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hostel Details | HostelHunter</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="index.html" class="logo">CampusHostels</a>
+            <a href="index.html" class="logo">
+                <img src="icon.jpeg" alt="Logo" class="nav-title-icon"
+                    style="width:50px; height:50px; border-radius:50%; object-fit:cover;">HostelHunter
+            </a>
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
@@ -30,7 +35,7 @@
 
     <!-- Main Detail Layout -->
     <div class="container">
-        
+
         <!-- Header Info -->
         <div style="margin-top: 30px; margin-bottom: 20px;">
             <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px;">
@@ -38,31 +43,38 @@
                 <span class="rating">&#9733; 4.8 (24 Student Reviews)</span>
             </div>
             <h1 style="color: var(--navy); font-size: 2.2rem; margin-bottom: 6px;">Elite Heights Hostel</h1>
-            <p class="location" style="font-size: 1rem;"><span style="color: var(--blue);">&#9873;</span> Techambia Zone A (5 mins walk to main campus)</p>
+            <p class="location" style="font-size: 1rem;"><span style="color: var(--blue);">&#9873;</span> Techambia Zone
+                A (5 mins walk to main campus)</p>
         </div>
 
         <!-- Image Gallery Grid -->
         <div class="gallery-container">
-            <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1000&q=80" alt="Hostel Main View" class="main-image">
+            <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1000&q=80"
+                alt="Hostel Main View" class="main-image">
             <div class="side-images">
-                <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=500&q=80" alt="Hostel Room">
-                <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=500&q=80" alt="Hostel Compound">
+                <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=500&q=80"
+                    alt="Hostel Room">
+                <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=500&q=80"
+                    alt="Hostel Compound">
             </div>
         </div>
 
         <!-- Layout Grid -->
         <div class="detail-layout">
-            
+
             <!-- Left Column: Details & Rooms -->
             <div>
                 <!-- Overview -->
                 <div class="detail-section">
                     <h2>About Elite Heights</h2>
                     <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 16px;">
-                        Elite Heights Hostel provides modern, serene, and secure student accommodation tailored for focused academic success. Located just a 5-minute walk from the main gate, it features reliable utility connections, study reading areas, and a friendly student community.
+                        Elite Heights Hostel provides modern, serene, and secure student accommodation tailored for
+                        focused academic success. Located just a 5-minute walk from the main gate, it features reliable
+                        utility connections, study reading areas, and a friendly student community.
                     </p>
-                    
-                    <h3 style="font-size: 1.1rem; color: var(--navy); margin-top: 20px; margin-bottom: 12px;">Key Amenities</h3>
+
+                    <h3 style="font-size: 1.1rem; color: var(--navy); margin-top: 20px; margin-bottom: 12px;">Key
+                        Amenities</h3>
                     <div class="amenities-grid">
                         <div class="amenity-item">&#10003; High-speed Wi-Fi Access</div>
                         <div class="amenity-item">&#10003; 24/7 Gate Security & CCTV</div>
@@ -76,7 +88,7 @@
                 <!-- Available Rooms -->
                 <div class="detail-section" id="rooms">
                     <h2>Available Room Types</h2>
-                    
+
                     <div class="room-type-card">
                         <div class="room-info">
                             <h4>Single Room (Standard)</h4>
@@ -84,7 +96,8 @@
                         </div>
                         <div class="room-action">
                             <div class="price">$120 <span>/ semester</span></div>
-                            <a href="booking.html?room=single&hostel=1" class="btn btn-primary" style="padding: 6px 14px; font-size: 0.85rem;">Book Now</a>
+                            <a href="booking.html?room=single&hostel=1" class="btn btn-primary"
+                                style="padding: 6px 14px; font-size: 0.85rem;">Book Now</a>
                         </div>
                     </div>
 
@@ -95,7 +108,8 @@
                         </div>
                         <div class="room-action">
                             <div class="price">$85 <span>/ semester</span></div>
-                            <a href="booking.html?room=double&hostel=1" class="btn btn-primary" style="padding: 6px 14px; font-size: 0.85rem;">Book Now</a>
+                            <a href="booking.html?room=double&hostel=1" class="btn btn-primary"
+                                style="padding: 6px 14px; font-size: 0.85rem;">Book Now</a>
                         </div>
                     </div>
 
@@ -106,7 +120,8 @@
                         </div>
                         <div class="room-action">
                             <div class="price">$180 <span>/ semester</span></div>
-                            <a href="booking.html?room=suite&hostel=1" class="btn btn-primary" style="padding: 6px 14px; font-size: 0.85rem;">Book Now</a>
+                            <a href="booking.html?room=suite&hostel=1" class="btn btn-primary"
+                                style="padding: 6px 14px; font-size: 0.85rem;">Book Now</a>
                         </div>
                     </div>
                 </div>
@@ -114,14 +129,16 @@
                 <!-- Reviews Section -->
                 <div class="detail-section">
                     <h2>Student Reviews</h2>
-                    
+
                     <div class="review-card">
                         <div class="review-header">
                             <span class="reviewer-name">Alex Mukasa</span>
                             <span class="review-date">Sem 1, 2026</span>
                         </div>
-                        <div style="color: #d97706; font-size: 0.85rem; margin-bottom: 6px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                        <p class="review-text">Very quiet environment for studying. Water and power are consistently available without interruptions.</p>
+                        <div style="color: #d97706; font-size: 0.85rem; margin-bottom: 6px;">
+                            &#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <p class="review-text">Very quiet environment for studying. Water and power are consistently
+                            available without interruptions.</p>
                     </div>
 
                     <div class="review-card">
@@ -129,8 +146,10 @@
                             <span class="reviewer-name">Sarah Akello</span>
                             <span class="review-date">Sem 2, 2025</span>
                         </div>
-                        <div style="color: #d97706; font-size: 0.85rem; margin-bottom: 6px;">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
-                        <p class="review-text">Close to campus and secure. Management is responsive whenever maintenance is needed.</p>
+                        <div style="color: #d97706; font-size: 0.85rem; margin-bottom: 6px;">
+                            &#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                        <p class="review-text">Close to campus and secure. Management is responsive whenever maintenance
+                            is needed.</p>
                     </div>
                 </div>
             </div>
@@ -139,8 +158,9 @@
             <div>
                 <div class="booking-sidebar">
                     <h3>Hostel Summary</h3>
-                    <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 16px;">Secure your semester room early before spaces fill up.</p>
-                    
+                    <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 16px;">Secure your semester room
+                        early before spaces fill up.</p>
+
                     <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.9rem;">
                         <span style="color: var(--muted);">Price Range:</span>
                         <strong>$85 - $180</strong>
@@ -154,7 +174,8 @@
                         <strong style="color: var(--green);">Rooms Available</strong>
                     </div>
 
-                    <a href="#rooms" class="btn btn-primary full-width" style="margin-bottom: 12px; text-align: center;">Select Room & Book</a>
+                    <a href="#rooms" class="btn btn-primary full-width"
+                        style="margin-bottom: 12px; text-align: center;">Select Room & Book</a>
 
                     <div class="hostel-contact-box">
                         <p style="margin-bottom: 4px;">Hostel Manager:</p>
@@ -172,11 +193,12 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 CampusHostels. All rights reserved.</p>
+            <p>&copy; 2026 HostelHunter. All rights reserved.</p>
             <p class="footer-sub">Designed for students to find comfortable, secure, and affordable housing.</p>
         </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
+
 </html>
