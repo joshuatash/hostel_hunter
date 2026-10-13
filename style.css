@@ -586,7 +586,7 @@ textarea {
 .detail-section,
 .booking-card,
 .dashboard-card {
-  padding: 32px;
+  padding: 30px;
   margin-bottom: 24px;
   background: var(--white);
   border: 1px solid var(--border);
@@ -1168,7 +1168,7 @@ textarea {
   .contact-form-card,
   .booking-card,
   .detail-section {
-    padding: 24px;
+    padding: 22px;
   }
 
   /* Tables wrapper */

@@ -14,7 +14,7 @@ try {
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
     ]);
 } catch (PDOException $e) {
-    echo json_encode(['success' => false, 'message' => 'Database connection failed. Ensure Apache & MySQL are running in XAMPP.[span_0](start_span)[span_0](end_span)']);
+    echo json_encode(['success' => false, 'message' => 'Database connection failed. Ensure Server is Running. [span_0](start_span)[span_0](end_span)']);
     exit;
 }
 
